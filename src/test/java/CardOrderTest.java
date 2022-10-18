@@ -17,26 +17,44 @@ class CardOredTest {
     private WebDriver driver;
 
     @BeforeAll
-
-    static void setUpAll() {
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
+    static void setupClass() {
+        WebDriverManager.chromedriver().setup();
     }
 
-
     @BeforeEach
-    void setUp() {
+    void setUp(){
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--no-sandbox");
-        options.addArguments("--headless");
+        options.setHeadless(true);
         driver = new ChromeDriver(options);
     }
 
     @AfterEach
-    void tearDown() {
+    void tearsDown() {
         driver.quit();
         driver = null;
     }
+
+//    @BeforeAll
+//
+//    static void setUpAll() {
+//        System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
+//    }
+//
+//
+//    @BeforeEach
+//    void setUp() {
+//        ChromeOptions options = new ChromeOptions();
+//        options.addArguments("--disable-dev-shm-usage");
+//        options.addArguments("--no-sandbox");
+//        options.addArguments("--headless");
+//        driver = new ChromeDriver(options);
+//    }
+//
+//    @AfterEach
+//    void tearDown() {
+//        driver.quit();
+//        driver = null;
+//    }
 
     @Test
     void shouldTestFormComplition() {

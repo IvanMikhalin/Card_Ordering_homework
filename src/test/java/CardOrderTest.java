@@ -18,29 +18,19 @@ class CardOredTest {
 
     @BeforeAll
 
-    static void setupAll() {
-        WebDriverManager.chromedriver().setup();
+    static void setUpAll() {
+        System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
     }
-//    static void setUpAll() {
-//        System.setProperty("webdriver.chrome.driver", "driver/chromedriver");
-//    }
 
 
     @BeforeEach
-    void setup() {
+    void setUp() {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
         options.addArguments("--headless");
-        driver = new ChromeDriver();
+        driver = new ChromeDriver(options);
     }
-//    void setUp() {
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--disable-dev-shm-usage");
-//        options.addArguments("--no-sandbox");
-//        options.addArguments("--headless");
-//        driver = new ChromeDriver(options);
-//    }
 
     @AfterEach
     void tearDown() {

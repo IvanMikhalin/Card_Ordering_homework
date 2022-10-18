@@ -11,6 +11,13 @@ build: off  # будем использовать свой скрипт сбор
 install:
   - java -jar ./artifacts/app-order.jar &
 
+run:
+      name: Download Selenium
+      command: curl -O http://selenium-release.storage.googleapis.com/3.5/selenium-server-standalone-3.5.3.jar
+ run:
+      name: Start Selenium
+      command: java -jar selenium-server-standalone-3.5.3.jar -log test-reports/selenium.log
+
 
 build_script:
   - ./gradlew test --info  # запускаем тест, флаг --info позволяет выводить больше информации
